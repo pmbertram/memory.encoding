@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const WORD_DURATION_MS = 4000;
+  const WORD_DURATION_MS = 1000;
   const BLOCK_SIZE = 6;
   const DISTRACTOR_SECONDS = 30;
 

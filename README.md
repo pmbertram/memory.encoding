@@ -14,7 +14,7 @@ A static browser-based free-recall experiment comparing:
 ## Procedure
 - The three encoding strategies are randomized for each session.
 - Three six-word lists are independently shuffled and assigned to the strategies.
-- Words appear individually for four seconds.
+- Words appear individually for one second.
 - A 30-second backward-counting distractor follows the three encoding blocks.
 - Participants then freely recall and submit words in any order.
 - Results are displayed by strategy, with summary and trial-level CSV downloads.
