@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Encoding Experiment</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="site-header">
+      <div class="eyebrow">COGNITIVE PSYCHOLOGY · MEMORY STUDY</div>
+      <h1>Memory Encoding Experiment</h1>
+      <p class="subtitle">A short study of how different encoding strategies affect free recall.</p>
+    </header>
+
+    <section class="panel" id="welcome-screen">
+      <div class="progress-wrap"><span>SESSION SETUP</span><span>About 5–7 minutes</span></div>
+      <h2>Welcome</h2>
+      <p>You will study 18 words using three different strategies. Each strategy will be introduced before its block. After a short counting task, you will be asked to recall as many words as you can.</p>
+      <p class="notice">Please do not write down, photograph, or otherwise record the words during the study. Complete the experiment in one sitting.</p>
+      <label for="participant-id">Participant / session code <span class="optional">(optional)</span></label>
+      <input id="participant-id" type="text" maxlength="40" placeholder="e.g., P001">
+      <button id="start-button" class="primary">Begin experiment <span aria-hidden="true">→</span></button>
+    </section>
+
+    <section class="panel hidden" id="instruction-screen">
+      <div class="progress-wrap"><span id="block-label">ENCODING BLOCK 1 OF 3</span><span id="strategy-count">1 / 3</span></div>
+      <div class="progress-track"><div id="progress-fill"></div></div>
+      <p class="eyebrow">NEXT ENCODING STRATEGY</p>
+      <h2 id="strategy-title">Strategy</h2>
+      <p id="strategy-instructions" class="strategy-copy"></p>
+      <p class="notice">You will see six words, one at a time. Try to use the strategy for every word. Each word will appear for four seconds.</p>
+      <button id="begin-block-button" class="primary">I'm ready</button>
+    </section>
+
+    <section class="panel study-panel hidden" id="study-screen">
+      <div class="progress-wrap"><span id="study-block-label">BLOCK 1 OF 3</span><span id="word-counter">WORD 1 OF 6</span></div>
+      <div class="progress-track"><div id="study-progress-fill"></div></div>
+      <p class="eyebrow" id="study-strategy-name">MAINTENANCE REHEARSAL</p>
+      <div class="word-stage">
+        <div id="study-word" class="study-word" aria-live="polite">APPLE</div>
+        <p id="study-hint">Keep repeating the word to yourself.</p>
+      </div>
+      <p class="small-muted">Focus on the word until the next one appears.</p>
+    </section>
+
+    <section class="panel hidden" id="transition-screen">
+      <div class="progress-wrap"><span>ENCODING</span><span id="completed-blocks">1 OF 3 BLOCKS COMPLETE</span></div>
+      <h2>Block complete</h2>
+      <p>That block is finished. Take a moment, then continue to the next encoding strategy.</p>
+      <button id="continue-button" class="primary">Continue</button>
+    </section>
+
+    <section class="panel hidden" id="distractor-screen">
+      <div class="progress-wrap"><span>SHORT DISTRACTOR TASK</span><span>30 SECONDS</span></div>
+      <h2>Count backward by 3s</h2>
+      <p>Starting from the number below, count backward by three. Type the numbers in order, separated by spaces or commas. Keep going until the timer reaches zero.</p>
+      <div class="starting-number" id="starting-number">—</div>
+      <label for="counting-response">Your numbers</label>
+      <textarea id="counting-response" rows="3" placeholder="e.g., 742, 739, 736..." spellcheck="false"></textarea>
+      <div class="timer-row"><span>TIME REMAINING</span><strong id="timer">00:30</strong></div>
+      <div class="progress-track timer-track"><div id="timer-fill"></div></div>
+      <button id="start-counting-button" class="primary">Start 30-second task</button>
+      <p class="small-muted">The recall phase will begin automatically when time is up.</p>
+    </section>
+
+    <section class="panel hidden" id="recall-screen">
+      <div class="progress-wrap"><span>FREE RECALL</span><span>18 WORDS STUDIED</span></div>
+      <h2>Recall the words</h2>
+      <p>Type as many of the words from the study as you can remember. You may enter them in any order. Separate words with commas, spaces, or line breaks. Do not worry about capitalization.</p>
+      <label for="recall-response">Words you remember</label>
+      <textarea id="recall-response" rows="7" placeholder="Type the words you remember here..." autocomplete="off" autocapitalize="off"></textarea>
+      <p class="small-muted">Take your time. Submit when you are finished.</p>
+      <button id="submit-recall-button" class="primary">Submit answers</button>
+    </section>
+
+    <section class="panel hidden" id="results-screen">
+      <div class="progress-wrap"><span>SESSION COMPLETE</span><span id="result-session-id"></span></div>
+      <h2>Your results</h2>
+      <p>Recall is scored by encoding strategy. Each word can earn credit only once. Capitalization and minor spelling errors are ignored when the intended word is clear.</p>
+      <div id="results-grid" class="results-grid"></div>
+      <div class="total-line"><span>Total words recalled</span><strong id="total-score">0 / 18</strong></div>
+      <h3>Recall details</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Strategy</th><th>Correct</th><th>Words recalled</th></tr></thead>
+          <tbody id="results-table"></tbody>
+        </table>
+      </div>
+      <div class="download-area">
+        <h3>Download your data</h3>
+        <p>Save both CSV files for analysis. The summary file contains one row for this session; the trial-level file contains one row for each studied word.</p>
+        <div class="button-row">
+          <button id="summary-download" class="primary">Download summary CSV</button>
+          <button id="trial-download" class="secondary">Download trial-level CSV</button>
+        </div>
+      </div>
+      <p class="notice">Data are processed in this browser and are not sent to a server. Download the CSV files before closing or refreshing this page.</p>
+      <button id="restart-button" class="text-button">Start a new session</button>
+    </section>
+
+    <footer>Local browser experiment · No account or server required</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
